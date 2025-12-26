@@ -1,10 +1,14 @@
 package io.raineri.jbow;
 
-/**
- * Hello world!
- */
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        try {
+            FileProcessor file = new FileProcessor();
+            file.getFile(args[0]);
+            System.out.print(file.processFile());
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
