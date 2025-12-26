@@ -3,11 +3,9 @@ package io.raineri.jbow;
 import java.io.File;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.HashMap;
 import java.io.FileNotFoundException;
 
 public class FileProcessor {
-    private Map<String, Integer> database = new HashMap<String, Integer>();
     private Scanner fileScanner;
     
     public Scanner getFile(String path) throws FileNotFoundException {
@@ -23,14 +21,13 @@ public class FileProcessor {
 
         while(filScanner.hasNext()) {
             word = TextProcessor.cleanWord(filScanner.next());
-            if(this.database.containsKey(word)) {
-                this.database.put(word, this.database.get(word) + 1);
+            if(Database.instance().containsKey(word)) {
+            	Database.put(word, Database.instance().get(word) + 1);
                 continue;
             }
-            this.database.put(word, 1);
+            Database.add(word, Integer.valueOf(1));
         }
 
-        return this.database;
-    }
-    
+        return Database.instance();
+    }   
 }

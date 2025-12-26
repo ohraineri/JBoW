@@ -3,6 +3,7 @@ package io.raineri.jbow;
 import java.text.Normalizer;
 
 public class TextProcessor {
+
     static public String removeNonAlphabetCharsFromWord(String word) {
         return word.replaceAll("[^a-zA-Z0-9]", "");
     }
